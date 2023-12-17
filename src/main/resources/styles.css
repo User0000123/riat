@@ -1,0 +1,92 @@
+.menu-button{
+    -fx-pref-height: 80px;
+    -fx-arc-height: 100px;
+    -fx-arc-width: 100px;
+    -fx-border-radius: 100px;
+    -fx-background-radius: 100px;
+    -fx-font-size: 40px;
+}
+.menu-button:hover{
+    -fx-background-color: yellow;
+}
+
+.menu-label{
+    -fx-font-size: 100px;
+    -fx-font-color: green;
+}
+
+.card-pane{
+    -fx-border-style: solid;
+    -fx-border-width: 10px;
+    -fx-border-color: blue;
+    -fx-arc-height: 10px;
+    -fx-arc-width: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.card-font{
+    -fx-font-size: 20px;
+}
+
+.tf-user-name{
+    -fx-pref-height: 80px;
+    -fx-arc-height: 100px;
+    -fx-arc-width: 100px;
+    -fx-border-radius: 100px;
+    -fx-background-radius: 100px;
+    -fx-font-size: 40px;
+}
+
+.ball-font{
+    -fx-font-size: 40px;
+    -fx-font-color: blue;
+}
+
+.openMenu-button{
+    -fx-pref-height: 60px;
+    -fx-arc-height: 100px;
+    -fx-arc-width: 100px;
+    -fx-border-radius: 100px;
+    -fx-background-radius: 100px;
+    -fx-font-size: 30px;
+    -fx-background-color: yellow;
+}
+
+.message-box{
+    -fx-fill: wheat;
+    -fx-arc-height: 40px;
+    -fx-arc-width: 40px;
+}
+
+.message-box-button{
+    -fx-border-radius: 5px;
+    -fx-background-radius: 10px;
+    -fx-background-color: green;
+    -fx-border-width: 2px;
+    -fx-border-color: forestgreen;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-padding: 0px;
+    -fx-font-size: 15px;
+    -fx-text-fill: yellow;
+    -fx-font-weight: 700;
+}
+
+.message-box-label{
+    -fx-text-fill: FORESTGREEN;
+    -fx-font-weight: 700;
+}
+
+.players-table-font{
+    -fx-font-size: 30px;
+    -fx-font-fill: green;
+}
+
+.users-list-view{
+    -fx-font-size:20px;
+    -fx-font-color:green;
+}
+
+.text-area{
+    -fx-background-color:cornsilk;
+    -fx-font-size: 15px;
+}
