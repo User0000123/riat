@@ -1,3 +1,4 @@
+import com.mysql.cj.log.Log;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.scene.Group;
@@ -5,11 +6,14 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.apache.log4j.Level;
 
 import java.util.LinkedHashMap;
 import java.util.function.Consumer;
+import java.util.logging.Logger;
 
 public class Game extends Application {
+    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Game.class);
     public static Stage stage;
     public static Player player;
     public static EventManager eventManager;
@@ -70,6 +74,7 @@ public class Game extends Application {
         buttonHandlers.put("Назад", event-> stage.fireEvent(new UserEvent(UserEventType.BACK_TO_MENU)));
         gameStartMenu = new Menu("Параметры игры", buttonHandlers, 0.3,0.5);
         gameStartMenu.setMenuVisible(false);
+        log.log(Level.INFO, "Player added");
     }
 
     private void initPauseGameMenu(){

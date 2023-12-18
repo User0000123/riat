@@ -10,8 +10,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 @ClientEndpoint
 public class ClientWebSocket {
+    private static final Logger log = Logger.getLogger(ClientWebSocket.class);
     private static final String gameMessageQueue = "gameMessageQueue";
     private Session session;
     private Channel channel;
@@ -31,7 +34,9 @@ public class ClientWebSocket {
                     String m = new String(message.getBody(), StandardCharsets.UTF_8);
                     message(null, m);
                 }, consumerTag -> {});
+            log.log(Level.INFO, "player's connection opened");
         } catch (IOException e) {
+            log.log(Level.INFO, "failed to open player's connection");
             throw new RuntimeException(e);
         }
         this.session = session;
@@ -70,8 +75,10 @@ public class ClientWebSocket {
         try {
             container.connectToServer(this, uri);
             send(new WSMessage(MessageType.REGISTER_USER, userName));
+            log.log(Level.INFO, "Player added");
             System.out.println();
         } catch (DeploymentException | IOException e) {
+            log.log(Level.INFO, "failed to add player ");
             System.out.println("Exception at the process of connection to server " + e);
         }
     }
