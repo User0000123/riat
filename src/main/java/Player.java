@@ -1,7 +1,17 @@
+import org.apache.log4j.Level;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Properties;
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class Player extends GameObject{
     private ClientWebSocket clientWebSocket;
+    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Player.class);
+    private static final String INSERT_USER = "INSERT INTO users VALUES (1, ?, ?)";
 
     private String playerName = "Default";
     private String serverName = "127.0.0.1:8080";
@@ -11,6 +21,23 @@ public class Player extends GameObject{
     private static final int INVITE_CODE_LENGTH = 7;
 
     public void connectToServer(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Properties properties = new Properties();
+            PreparedStatement statement = null;
+            properties.setProperty("user", "root");
+            properties.setProperty("password", "password");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/riat", properties);
+            statement = con.prepareStatement(INSERT_USER);
+            //statement = con.prepareStatement(ADD_USER);
+            statement.setString(1, "username");
+            statement.setString(2, "127.0.0.1");
+            statement.executeUpdate();
+            log.log(Level.INFO, "connected to db");
+            System.out.println("Success");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
         clientWebSocket = new ClientWebSocket(playerName, getURIToConnect());
         isConnected = clientWebSocket.getSession() != null;
     }
