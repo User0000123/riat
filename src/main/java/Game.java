@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 
 public class Game extends Application {
     private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Game.class);
+    private static final String INSERT_USER = "INSERT INTO users (ip, name)";
+
     public static Stage stage;
     public static Player player;
     public static EventManager eventManager;
@@ -35,7 +37,10 @@ public class Game extends Application {
         Game.stage = stage;
         stage.setTitle("Лото");
         stage.setScene(new Scene(new Group()));
-        stage.setFullScreen(true);
+        stage.setFullScreen(false);
+        //stage.addEventHandler();
+
+        //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.getScene().getStylesheets().add("styles.css");
         stage.setFullScreenExitHint("");
