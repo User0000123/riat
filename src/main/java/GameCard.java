@@ -11,6 +11,10 @@ import javafx.scene.shape.Rectangle;
 import java.util.HashSet;
 import java.util.Random;
 
+/**
+ * The type Game card. Implementation of one game card.
+ * @author Aleksej
+ */
 public class GameCard extends GameObject{
     private HBox hBox;
     private GridPane gridPane;
@@ -18,6 +22,9 @@ public class GameCard extends GameObject{
     private static final int CARD_ROWS = 3;
     private static final int CARD_COLUMNS = 9;
 
+    /**
+     * Instantiates a new Game card.
+     */
     public GameCard() {
         gridPane = new GridPane();
         gridPane.getStyleClass().add("card-pane");

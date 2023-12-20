@@ -12,6 +12,11 @@ import java.util.concurrent.TimeoutException;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+
+/**
+ * The type Client web socket. This is an implementation of the client web socket.
+ * @author Aleksej
+ */
 @ClientEndpoint
 public class ClientWebSocket {
     private static final Logger log = Logger.getLogger(ClientWebSocket.class);
@@ -20,6 +25,14 @@ public class ClientWebSocket {
     private Channel channel;
     private final Proxy proxy = new Proxy();
 
+    /**
+     * The method is called when creating a websocket.
+     *
+     * @param session the session
+     * @param config  the config
+     * @throws IOException      the io exception
+     * @throws TimeoutException the timeout exception
+     */
     @OnOpen
     public void onOpen(Session session, EndpointConfig config) throws IOException, TimeoutException {
         ConnectionFactory cf = new ConnectionFactory();
@@ -42,6 +55,12 @@ public class ClientWebSocket {
         this.session = session;
     }
 
+    /**
+     * This method allows you to process a message that has come to the user.
+     *
+     * @param session the session
+     * @param msg     the received message
+     */
     @OnMessage
     public void message(Session session, String msg) {
         WSMessage message = ((WSMessage) proxy.deserializeFromJSON(msg));
@@ -69,6 +88,12 @@ public class ClientWebSocket {
         return result;
     }
 
+    /**
+     * Instantiates a new Client web socket.
+     *
+     * @param userName     the player name
+     * @param uriToConnect the uri of the server to connect
+     */
     public ClientWebSocket(String userName, String uriToConnect){
         URI uri = URI.create(uriToConnect);
         WebSocketContainer container = ContainerProvider.getWebSocketContainer();
@@ -83,6 +108,11 @@ public class ClientWebSocket {
         }
     }
 
+    /**
+     * Send.
+     *
+     * @param message the message
+     */
     public void send(WSMessage message){
         try {
             session.getBasicRemote().sendText(proxy.serializeToJSON(message));
@@ -91,8 +121,16 @@ public class ClientWebSocket {
         }
     }
 
+    /**
+     * Get session session.
+     *
+     * @return the session
+     */
     public Session getSession(){return this.session;}
 
+    /**
+     * Disconnect.
+     */
     public void disconnect() {
         if (session != null){
             try {

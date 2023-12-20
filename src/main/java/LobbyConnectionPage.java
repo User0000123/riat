@@ -4,6 +4,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * The type Lobby connection page. The settings window for launching a new game,
+ * connecting to the game room.
+ *
+ * @author Aleksej
+ */
 public class LobbyConnectionPage extends GameObject{
     private HBox hBox;
     private VBox vBox;
@@ -14,6 +20,11 @@ public class LobbyConnectionPage extends GameObject{
     private static final double WIDTH = 0.4;
     private static final double HEIGHT = 0.4;
 
+    /**
+     * Instantiates a new Lobby connection page.
+     *
+     * @param isNewGame the is new game
+     */
     public LobbyConnectionPage(boolean isNewGame){
         int width = ((int) Game.stage.getScene().getWidth());
         int height = ((int) Game.stage.getScene().getHeight());
@@ -58,6 +69,11 @@ public class LobbyConnectionPage extends GameObject{
         this.setVisible(false);
     }
 
+    /**
+     * Set visible lobby connection page.
+     *
+     * @param option the option
+     */
     public void setVisible(boolean option){
         node.setVisible(option);
         if (option) {
@@ -66,6 +82,9 @@ public class LobbyConnectionPage extends GameObject{
         }
     }
 
+    /**
+     * Update lobby page.
+     */
     public void update(){
         tfLobbyPath.setText(Game.player.getURIToConnect());
     }

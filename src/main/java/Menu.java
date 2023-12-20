@@ -8,6 +8,11 @@ import javafx.scene.layout.VBox;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
+/**
+ * The type Menu. Responsible for the display and rendering of the menu.
+ *
+ * @author Aleksej
+ */
 public class Menu extends GameObject{
     private VBox vBox;
     private final Label label;
@@ -15,6 +20,14 @@ public class Menu extends GameObject{
     private final double TITLE_SIZE;
     private final double BUTTON_SIZE;
 
+    /**
+     * Instantiates a new Menu.
+     *
+     * @param label              the label of the menu
+     * @param buttonHandlers     the buttons for the menu
+     * @param titleSizePercents  the title size percents
+     * @param buttonSizePercents the button size percents
+     */
     public Menu(String label, HashMap<String, Consumer<MouseEvent>> buttonHandlers,
                 double titleSizePercents, double buttonSizePercents){
         this.label = new Label(label);
@@ -56,6 +69,11 @@ public class Menu extends GameObject{
         });
     }
 
+    /**
+     * Set menu visible.
+     *
+     * @param option the option
+     */
     public void setMenuVisible(boolean option){
         node.setVisible(option);
         label.setVisible(option);

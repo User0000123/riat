@@ -2,6 +2,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
+/**
+ * The type Status bar. It contains elements located on the top panel of the playing field.
+ */
 public class StatusBar extends GameObject{
     private TrayNumbers trayNumbers;
 
@@ -11,6 +14,9 @@ public class StatusBar extends GameObject{
     private static final double HEIGHT = 0.2;
     private static final double WIDTH = 0.2;
 
+    /**
+     * Instantiates a new Status bar.
+     */
     public StatusBar(){
         int height = ((int) (Game.stage.getScene().getHeight() * HEIGHT));
         int width = ((int) Game.stage.getScene().getWidth());
@@ -35,6 +41,11 @@ public class StatusBar extends GameObject{
         root.getChildren().addAll(node,openMenuHBox);
     }
 
+    /**
+     * Set visible.
+     *
+     * @param option the option
+     */
     public void setVisible(boolean option){
         node.setVisible(option);
         openMenuHBox.setVisible(option);

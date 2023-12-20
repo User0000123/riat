@@ -11,6 +11,9 @@ import javafx.util.Duration;
 
 import java.util.LinkedList;
 
+/**
+ * The type Tray numbers. Responsible for storing and displaying the current active barrels available to the user.
+ */
 public class TrayNumbers extends GameObject{
     private HBox trayBox;
     private HBox hBoxNumbers;
@@ -21,6 +24,9 @@ public class TrayNumbers extends GameObject{
     private static final double HEIGHT = 0.1;
     private static final double CELL_RADIUS = HEIGHT*0.8/2;
 
+    /**
+     * Instantiates a new Tray numbers.
+     */
     public TrayNumbers(){
         int width = ((int) (Game.stage.getScene().getWidth() * WIDTH));
         int height = ((int) (Game.stage.getScene().getHeight() * HEIGHT));

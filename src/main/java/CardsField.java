@@ -4,6 +4,11 @@ import javafx.scene.layout.VBox;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The type Cards field responsible for displaying all the cards on the playing
+ * field.
+ * @author Aleksej
+ */
 public class CardsField extends GameObject{
     private List<GameCard> cards = new LinkedList<>();
     private VBox vBox;
@@ -11,6 +16,9 @@ public class CardsField extends GameObject{
     private final double WIDTH_SIZE = 0.8;
     private static final int NUMBER_OF_CARDS = 3;
 
+    /**
+     * Instantiates a new Cards field. Creates game cards on the field and draws them.
+     */
     public CardsField(){
         node = (vBox = new VBox());
         root.getChildren().add(node);
@@ -26,6 +34,5 @@ public class CardsField extends GameObject{
             GameCard gameCard = new GameCard();
             vBox.getChildren().add(gameCard.node);
         }
-
     }
 }

@@ -6,6 +6,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * The type Chat field. Responsible for displaying the chat in the game window.
+ * @author Aleksej
+ */
 public class ChatField extends GameObject{
     private Label label;
     private VBox vBox;
@@ -15,6 +19,9 @@ public class ChatField extends GameObject{
     private static final double WIDTH = 0.2;
     private static final double HEIGHT = 0.4;
 
+    /**
+     * Instantiates a new Chat field.
+     */
     public ChatField(){
         int width = ((int) (Game.stage.getScene().getWidth() * WIDTH));
         int height = ((int) (Game.stage.getScene().getHeight() * HEIGHT));
@@ -59,7 +66,12 @@ public class ChatField extends GameObject{
             root.fireEvent(new UserEvent(message, UserEventType.SEND_MESSAGE));
         }
     }
-    
+
+    /**
+     * Set chat visible.
+     *
+     * @param option that chooses variant of visibility
+     */
     public void setVisible(boolean option){
         node.setVisible(option);
     }

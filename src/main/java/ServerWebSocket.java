@@ -12,6 +12,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * The type Server web socket. The web socket that will be deployed on the server.
+ *
+ * @author Aleksej
+ */
 @ServerEndpoint("/game/{room_name}")
 public class ServerWebSocket {
     private static final String gameMessageQueue = "gameMessageQueue";
@@ -21,6 +26,15 @@ public class ServerWebSocket {
     private static Timer timer;
     private static Channel channel;
 
+    /**
+     * Open socket with client.
+     *
+     * @param session  the session
+     * @param c        the c
+     * @param roomName the room name
+     * @throws IOException      the io exception
+     * @throws TimeoutException the timeout exception
+     */
     @OnOpen
     public void open(Session session, EndpointConfig c, @PathParam("room_name") String roomName) throws IOException, TimeoutException {
         ConnectionFactory cf = new ConnectionFactory();
@@ -53,6 +67,13 @@ public class ServerWebSocket {
         }
     }
 
+    /**
+     * Message handler.
+     *
+     * @param session  the session
+     * @param msg      the msg
+     * @param roomName the room name
+     */
     @OnMessage
     public void message(Session session, String msg, @PathParam("room_name") String roomName){
         WSMessage message = ((WSMessage) proxy.deserializeFromJSON(msg));
@@ -76,6 +97,14 @@ public class ServerWebSocket {
         }
     }
 
+    /**
+     * Close socket.
+     *
+     * @param session  the session
+     * @param reason   the reason
+     * @param roomName the room name
+     * @throws IOException the io exception
+     */
     @OnClose
     public void close(Session session, CloseReason reason, @PathParam("room_name") String roomName) throws IOException {
         usersByRooms.get(roomName).remove(session);

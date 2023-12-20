@@ -1,4 +1,4 @@
-import com.mysql.cj.log.Log;
+//import com.mysql.cj.log.Log;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.scene.Group;
@@ -12,22 +12,65 @@ import java.util.LinkedHashMap;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
+/**
+ * The main class to start the game application on the user side. This class initiates the creation
+ * of the main game objects.
+ * @author Aleksej
+ */
 public class Game extends Application {
     private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Game.class);
     private static final String INSERT_USER = "INSERT INTO users (ip, name)";
 
+    /**
+     * The application stage.
+     */
     public static Stage stage;
+    /**
+     * Current player.
+     */
     public static Player player;
+    /**
+     * EventManager.
+     */
     public static EventManager eventManager;
+    /**
+     * The constant gameField.
+     */
     public static GameField gameField;
+    /**
+     * The constant messageBox.
+     */
     public static MessageBox messageBox;
+    /**
+     * The constant mainMenu.
+     */
     public static Menu mainMenu;
+    /**
+     * The constant gameStartMenu.
+     */
     public static Menu gameStartMenu;
+    /**
+     * The constant pauseGameMenu.
+     */
     public static Menu pauseGameMenu;
+    /**
+     * The constant lobbyNewGame.
+     */
     public static LobbyConnectionPage lobbyNewGame;
+    /**
+     * The constant lobbyExistingGame.
+     */
     public static LobbyConnectionPage lobbyExistingGame;
+    /**
+     * The constant settingsWindow.
+     */
     public static SettingsWindow settingsWindow;
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         Game.launch(args);
     }
@@ -96,6 +139,11 @@ public class Game extends Application {
         settingsWindow.setSettingsVisible(false);
     }
 
+    /**
+     * This method handles events from the event manager.
+     *
+     * @param event the event
+     */
     public void handle(UserEvent event) {
         switch (event.eventType) {
             case MENU_PLAY_BUTTON -> {

@@ -7,6 +7,11 @@ import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 
+/**
+ * The type Room users field. Displays a list of all users in the game room.
+ *
+ * @author Aleksej
+ */
 public class RoomUsersField extends GameObject{
     private Label label;
     private VBox vBox;
@@ -15,6 +20,9 @@ public class RoomUsersField extends GameObject{
     private static double HEIGHT = 0.4;
     private static double WIDTH = 0.2;
 
+    /**
+     * Instantiates a new Room users field.
+     */
     public RoomUsersField(){
         int width = ((int) (Game.stage.getScene().getWidth()*WIDTH));
         int height = ((int) (Game.stage.getScene().getHeight()*HEIGHT));
@@ -46,10 +54,20 @@ public class RoomUsersField extends GameObject{
         this.setVisible(false);
     }
 
+    /**
+     * Set visible room users field.
+     *
+     * @param option the option
+     */
     public void setVisible(boolean option){
         node.setVisible(option);
     }
 
+    /**
+     * Update users list.
+     *
+     * @param users the users
+     */
     public void update(ArrayList<String> users){
         usersListView.setItems(FXCollections.observableArrayList(users));
     }

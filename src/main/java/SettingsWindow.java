@@ -6,6 +6,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * The type Settings window. The main application settings window.
+ */
 public class SettingsWindow extends GameObject{
     private VBox vBox;
     private Label label;
@@ -17,6 +20,9 @@ public class SettingsWindow extends GameObject{
     private static final double BUTTON_WIDTH = 0.4;
     private static final double HEIGHT = 0.4;
 
+    /**
+     * Instantiates a new Settings window.
+     */
     public SettingsWindow(){
         HBox labelBox = new HBox();
         labelBox.setPrefHeight(Game.stage.getScene().getHeight()*HEIGHT);
@@ -95,6 +101,11 @@ public class SettingsWindow extends GameObject{
         if (!newName.isBlank()) root.fireEvent(new UserEvent(newName, UserEventType.APPLY_USER_NAME));
     }
 
+    /**
+     * Set settings visible.
+     *
+     * @param option the option
+     */
     public void setSettingsVisible(boolean option){
         vBox.setVisible(option);
         label.setVisible(option);

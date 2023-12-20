@@ -8,6 +8,11 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Logger;
 
+/**
+ * The type Player. It contains the parameters of the player and his web socket.
+ *
+ * @author Aleksej
+ */
 public class Player extends GameObject{
     private ClientWebSocket clientWebSocket;
     private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Player.class);
@@ -17,9 +22,15 @@ public class Player extends GameObject{
     private String serverName = "127.0.0.1:8080";
     private String inviteCode = "";
 
+    /**
+     * The connection property.
+     */
     public boolean isConnected = false;
     private static final int INVITE_CODE_LENGTH = 7;
 
+    /**
+     * Connect to server.
+     */
     public void connectToServer(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -80,6 +91,12 @@ public class Player extends GameObject{
         }
     }
 
+    /**
+     * Create invite code string.
+     *
+     * @param length the length
+     * @return the string
+     */
     public String createInviteCode(int length){
         String alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         StringBuilder inviteCode = new StringBuilder();
@@ -90,13 +107,24 @@ public class Player extends GameObject{
         return inviteCode.toString();
     }
 
+    /**
+     * Set invite code.
+     */
     public void setInviteCode(){this.inviteCode = createInviteCode(INVITE_CODE_LENGTH);}
 
+    /**
+     * Get uri to connect string.
+     *
+     * @return the string
+     */
     public String getURIToConnect(){
         StringBuilder uri = new StringBuilder("ws://");
         uri.append(serverName).append("/game/").append(inviteCode);
         return uri.toString();
     }
 
+    /**
+     * Close connection with server.
+     */
     public void closeConnectionWithServer(){if (clientWebSocket!=null) clientWebSocket.disconnect();}
 }

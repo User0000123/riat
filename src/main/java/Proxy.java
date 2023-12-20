@@ -1,5 +1,11 @@
 import com.google.gson.*;
 
+/**
+ * The type Proxy. Contains methods for serializing/deserializing
+ * messages when communicating between the client and the server.
+ *
+ * @author Aleksej
+ */
 public class Proxy {
     private final ExclusionStrategy strategy = new ExclusionStrategy() {
         @Override
@@ -10,6 +16,12 @@ public class Proxy {
 
     private final Gson gson = new GsonBuilder().setExclusionStrategies(strategy).create();
 
+    /**
+     * Serialize to json string.
+     *
+     * @param object the object
+     * @return the string
+     */
     public String serializeToJSON(Object object){
         JsonObject toSerialize = gson.toJsonTree(object).getAsJsonObject();
 
@@ -17,6 +29,12 @@ public class Proxy {
         return gson.toJson(toSerialize);
     }
 
+    /**
+     * Deserialize from json object.
+     *
+     * @param inputString the input string
+     * @return the object
+     */
     public Object deserializeFromJSON(String inputString){
         JsonObject retrievedObject = gson.fromJson(inputString, JsonObject.class);
         Class<?> classOfRetrObj;

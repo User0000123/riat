@@ -8,6 +8,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * The type Message box. Creates custom messages.
+ *
+ * @author Aleksej
+ */
 public class MessageBox extends GameObject{
     private HBox hBox;
     private StackPane boxPane;
@@ -18,6 +23,9 @@ public class MessageBox extends GameObject{
     private static final double HEIGHT = 0.4;
     private static final double WIDTH = 0.4;
 
+    /**
+     * Instantiates a new Message box.
+     */
     public MessageBox(){
         int height = ((int) Game.stage.getScene().getHeight());
         int width  = ((int) Game.stage.getScene().getWidth());
@@ -67,6 +75,11 @@ public class MessageBox extends GameObject{
         if (option) node.toFront();
     }
 
+    /**
+     * Show message box.
+     *
+     * @param message the message
+     */
     public void show(String message){
         label.setText(message);
         setVisible(true);
